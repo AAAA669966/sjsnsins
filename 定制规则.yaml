@@ -1,9 +1,10 @@
 #专为@quanlideyouxiting定制
 proxy-providers:
   定制:
-    url: "删除文字粘贴订阅链接"
+    url: "订阅链接"
     type: http
     interval: 86400
+    health-check: {enable: true,url: "https://www.gstatic.com/generate_204", interval: 300}
     override:
       additional-prefix: "[定制]"
       
