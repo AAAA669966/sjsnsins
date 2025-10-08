@@ -259,6 +259,11 @@ proxy-groups:
     filter: "(?i)港|hk|hongkong|hong kong"
     proxies: [默认,🇭🇰 香港,🇹🇼 台湾,🇯🇵 日本,🇸🇬 新加坡,🇺🇸 美国,🗺️ 其它地区,🔘 自动选择,直连]
     icon: "https://raw.githubusercontent.com/fmz200/wool_scripts/main/icons/apps/github_17.png"
+
+    - name: 抖音地区
+    type: select
+    proxies: [默认,🇭🇰 香港,🇹🇼 台湾,🇯🇵 日本,🇸🇬 新加坡,🇺🇸 美国,🗺️ 其它地区,🔘 自动选择,直连]
+    icon: "https://raw.githubusercontent.com/fmz200/wool_scripts/main/icons/apps/TikTok_03.png"
     
   - name: 国内 🇨🇳
     type: select
@@ -345,8 +350,8 @@ rules:
   - RULE-SET,Twitter,Twitter,no-resolve
   - PROCESS-NAME,com.twitter.android,Twitter
   - RULE-SET,Google,Google,no-resolve
-  - DOMAIN-SUFFIX,douyinvod.com,🇺🇸 美国
-  - DOMAIN-SUFFIX,amemv.com,🇺🇸 美国
+  - DOMAIN-SUFFIX,douyinvod.com,抖音地区
+  - DOMAIN-SUFFIX,amemv.com,抖音地区
   - DOMAIN,browserleaks.com,默认
   - PROCESS-NAME,com.microsoft.emmx,默认 
   - PROCESS-NAME,com.ume.browser,国内 🇨🇳
