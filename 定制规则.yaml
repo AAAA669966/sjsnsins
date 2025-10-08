@@ -187,7 +187,7 @@ dns:
   fallback:
     - 'https://dns.google/dns-query'
     - 'https://cloudflare-dns.com/dns-query'
-    - 'udp://8.8.8.8'
+    - 'udp://223.5.5.5'
     - 'udp://8.8.4.4'
     - 'udp://208.67.222.222'
 
