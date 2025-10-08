@@ -58,157 +58,31 @@ tun:
     - "tcp://any:53"
   fake-ip-range: 198.18.0.1/16
   fake-ip-filter:
-    - geoip:cn
+    - geoip.cn
     - domain:localhost
     - domain:*.lan
     - domain:*.local
-    - domain:*.msftconnecttest.com
-    - domain:*.msftncsi.com
-    - domain:*.qq.com
-    - domain:*.wechat.com
-    - domain:*.weixin.qq.com
-    - domain:*.miwifi.com
-    - domain:*.360.cn
-    - domain:*.taobao.com
   ipv6: false
 
-dns:
+
+Dns:
   enable: true
   ipv6: false
   cache: true
-  listen: '0.0.0.0:1053'
   enhanced-mode: fake-ip
-  fake-ip-range: 198.18.0.1/16
-  cache-size: 256
   fake-ip-filter:
-  # Base
-  - '*.lan'
-  - '*.local'
-  - '*.localhost'
-  - '*.example'
-  - '*.invalid'
-  - '*.test'
-  - '*.localdomain'
-  - '*.home.arpa'
-  - '+.msftconnecttest.com'
-  - '+.msftncsi.com'
-  - 'msftconnecttest.com'
-  - '*.msftconnecttest.com'
-  - '*.msftncsi.com'
-  - '*.windowsupdate.com'
-  - '*.microsoft.com'
-  - '+.pool.ntp.org'
-  - 'time.*.apple.com'
-  - 'time.*.com'
-  - 'time.*.gov'
-  - 'time.*.edu.cn'
-  - 'time1.*.com'
-  - 'time2.*.com'
-  - 'time3.*.com'
-  - 'time4.*.com'
-  - 'time5.*.com'
-  - 'time6.*.com'
-  - 'time7.*.com'
-  - 'ntp.*.com'
-  - 'ntp1.*.com'
-  - 'ntp2.*.com'
-  - 'ntp3.*.com'
-  - 'ntp4.*.com'
-  - 'ntp5.*.com'
-  - 'ntp6.*.com'
-  - 'ntp7.*.com'
-  - '*.time.edu.cn'
-  - '*.ntp.org.cn'
-  - 'time1.cloud.tencent.com'
-  - 'time.windows.com'
-  - 'time.nist.gov'
-  - 'stun.*.*'
-  - 'stun.*.*.*'
-  - '*.wechat.com'
-  - '*.weixin.qq.com'
-  - '*.servicewechat.com'
-  - '*.tenpay.com'
-  - '+.tencent.com'
-  - '*.qq.com'
-  - '*.taobao.com'
-  - '*.tmall.com'
-  - '*.alipay.com'
-  - '*.amap.com'
-  - '*.autonavi.com'
-  - '*.dingtalk.com'
-  - '*.alibaba.com'
-  - '*.meituan.com'
-  - '*.dianping.com'
-  - '*.sankuai.com'
-  - '*.jd.com'
-  - '*.pinduoduo.com'
-  - '*.pdd.com'
-  - '*.douyin.com'
-  - '*.bytedance.com'
-  - '*.toutiao.com'
-  - '*.xiaojukeji.com'
-  - '*.didiglobal.com'
-  - '*.didichuxing.com'
-  - '*.coolapk.com'
-  - '*.kugou.com'
-  - '*.icbc.com.cn'
-  - '*.icbc.com'
-  - '+.wotgame.cn'
-  - '+.wggames.cn'
-  - '+.wowsgame.cn'
-  - '+.wargaming.net'
-  - 'speedtest.cros.wr.pvp.net'
-  - '+.jjvip8.com'
-  - '*.mcdn.bilivideo.cn'
-  - 'www.bilibili.com'
-  - 'api.bilibili.com'
-  - 'a.w.bilicdn1.com'
-  - '*.music.163.com'
-  - 'music.163.com'
-  - 'y.qq.com'
-  - '*.y.qq.com'
-  - 'streamoc.music.tc.qq.com'
-  - 'mobileoc.music.tc.qq.com'
-  - 'isure.stream.qqmusic.qq.com'
-  - 'dl.stream.qqmusic.qq.com'
-  - 'aqqmusic.tc.qq.com'
-  - 'amobile.music.tc.qq.com'
-  - '+.nflxvideo.net'
-  - '+.sandai.net'
-  - 'dl.google.com'
-  - 'storage.googleapis.com'
-
-
+    - '*.lan'
+    - '*.local'
+    - '+.msftconnecttest.com'
+    - '+.msftncsi.com'
+    - '+.wechat.com'
+    - '+.qq.com'
+  default-nameserver:
+    - quic://223.5.5.5
   nameserver:
-    - 'udp://223.5.5.5'
-    - 'udp://223.6.6.6'
-    - 'udp://119.29.29.29'
-
-  fallback:
-    - 'https://dns.google/dns-query'
-    - 'https://cloudflare-dns.com/dns-query'
-    - 'udp://223.5.5.5'
-    - 'udp://8.8.4.4'
-    - 'udp://208.67.222.222'
-
-  fallback-filter:
-    geoip: true
-    geoip-code: CN
-    ipcidr:
-      - 240.0.0.0/4   
-    domain:
-      - '+.google.com'
-      - '+.facebook.com'
-      - '+.twitter.com'
-      - '+.youtube.com'
-      - '+.netflix.com'
-      - '+.telegram.org'
-      - '+.instagram.com'
-      - '+.github.com'
-      - '+.wikipedia.org'
-      - '+.whatsapp.net'
-      - '+.vimeo.com'
-      - '+.tiktok.com'
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
+  
     
 proxies: 
   - name: "直连"
@@ -314,15 +188,7 @@ proxy-groups:
     filter: "(?i)^(?!.*(?:🇭🇰|🇯🇵|🇺🇸|🇸🇬|🇨🇳|港|hk|hongkong|台|tw|taiwan|日|jp|japan|新|sg|singapore|美|us|unitedstates)).*"
     icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Puzzle.png"
 
-  - name: 🔘 自动选择
-    type: url-test
-    include-all: true
-    interval: 50000
-    url: http://www.gstatic.com/generate_204
-    exclude-type: direct
-    tolerance: 12
-    icon: "https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/zoomearth.png"
-
+  
 rule-anchor:
   classical-provider: &classical { type: http, interval: 86400, behavior: classical }
 
