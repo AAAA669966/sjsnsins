@@ -1,11 +1,11 @@
 #专为@quanlideyouxiting定制
 proxy-providers:
-  Viking:
+  定制:
     url: "删除文字粘贴订阅链接"
     type: http
     interval: 86400
     override:
-      additional-prefix: "[Viking]"
+      additional-prefix: "[定制]"
       
 mixed-port: 7890
 ipv6: false
@@ -345,6 +345,8 @@ rules:
   - RULE-SET,Twitter,Twitter,no-resolve
   - PROCESS-NAME,com.twitter.android,Twitter
   - RULE-SET,Google,Google,no-resolve
+  - DOMAIN-SUFFIX,douyinvod.com,🇺🇸 美国
+  - DOMAIN-SUFFIX,amemv.com,🇺🇸 美国
   - DOMAIN,browserleaks.com,默认
   - PROCESS-NAME,com.microsoft.emmx,默认 
   - PROCESS-NAME,com.ume.browser,国内 🇨🇳
