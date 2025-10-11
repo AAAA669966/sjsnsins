@@ -137,7 +137,7 @@ proxy-groups:
 
   - name: 抖音地区
     type: select
-    proxies: [默认,🇭🇰 香港,🇹🇼 台湾,🇯🇵 日本,🇸🇬 新加坡,🇺🇸 美国,🗺️ 其它地区,🔘 自动选择,直连]
+    proxies: [默认,🇭🇰 香港,🇹🇼 台湾,🇯🇵 日本,🇸🇬 新加坡,🇺🇸 美国,🗺️ 其它地区,直连]
     icon: "https://raw.githubusercontent.com/fmz200/wool_scripts/main/icons/apps/TikTok_03.png"
     
   - name: 国内 🇨🇳
