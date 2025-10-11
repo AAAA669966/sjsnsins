@@ -107,32 +107,32 @@ proxy-groups:
     type: select
     include-all: true
     filter: "(?i)港|hk|hongkong|hong kong"
-    proxies: [默认,🇭🇰 香港,🇹🇼 台湾,🇯🇵 日本,🇸🇬 新加坡,🇺🇸 美国,🗺️ 其它地区,🔘 自动选择,直连]
+    proxies: [默认,🇭🇰 香港,🇹🇼 台湾,🇯🇵 日本,🇸🇬 新加坡,🇺🇸 美国,🗺️ 其它地区,直连]
     icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Telegram.png"
 
   - name: Google
     type: select
     filter: "(?i)美|us|unitedstates|united states"
-    proxies: [默认,🇭🇰 香港,🇹🇼 台湾,🇯🇵 日本,🇸🇬 新加坡,🇺🇸 美国,🗺️ 其它地区,🔘 自动选择,直连]
+    proxies: [默认,🇭🇰 香港,🇹🇼 台湾,🇯🇵 日本,🇸🇬 新加坡,🇺🇸 美国,🗺️ 其它地区,直连]
     icon: "https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/GooglePlay.png"
     
   - name: YouTube
     type: select
     include-all: true
     filter: "(?i)港|hk|hongkong|hong kong"
-    proxies: [默认,🇭🇰 香港,🇹🇼 台湾,🇯🇵 日本,🇸🇬 新加坡,🇺🇸 美国,🗺️ 其它地区,🔘 自动选择,直连]
+    proxies: [默认,🇭🇰 香港,🇹🇼 台湾,🇯🇵 日本,🇸🇬 新加坡,🇺🇸 美国,🗺️ 其它地区,直连]
     icon: "https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/youtube.png"
     
   - name: Instagram
     type: select
     filter: "(?i)港|hk|hongkong|hong kong"
-    proxies: [默认,🇭🇰 香港,🇹🇼 台湾,🇯🇵 日本,🇸🇬 新加坡,🇺🇸 美国,🗺️ 其它地区,🔘 自动选择,直连]
+    proxies: [默认,🇭🇰 香港,🇹🇼 台湾,🇯🇵 日本,🇸🇬 新加坡,🇺🇸 美国,🗺️ 其它地区,直连]
     icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/color/instagram.png"
     
   - name: Twitter
     type: select
     filter: "(?i)港|hk|hongkong|hong kong"
-    proxies: [默认,🇭🇰 香港,🇹🇼 台湾,🇯🇵 日本,🇸🇬 新加坡,🇺🇸 美国,🗺️ 其它地区,🔘 自动选择,直连]
+    proxies: [默认,🇭🇰 香港,🇹🇼 台湾,🇯🇵 日本,🇸🇬 新加坡,🇺🇸 美国,🗺️ 其它地区,直连]
     icon: "https://raw.githubusercontent.com/fmz200/wool_scripts/main/icons/apps/github_17.png"
 
   - name: 抖音地区
