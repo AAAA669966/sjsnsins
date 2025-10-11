@@ -1,0 +1,267 @@
+#专为@quanlideyouxiting定制
+proxy-providers:
+  定制:
+    url: "订阅"
+    type: http
+    interval: 86400
+    health-check: {enable: true,url: "https://www.gstatic.com/generate_204", interval: 300}
+    override:
+      additional-prefix: "[定制]"
+      
+mixed-port: 7890
+ipv6: false
+allow-lan: true
+unified-delay: true
+tcp-concurrent: true
+external-controller: 127.0.0.1:9090
+external-ui: ui
+external-ui-url: "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip"
+
+geodata-mode: true
+geox-url:
+  geoip: "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip-lite.dat"
+  geosite: "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat"
+  mmdb: "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country-lite.mmdb"
+  asn: "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/GeoLite2-ASN.mmdb"
+
+find-process-mode: strict
+global-client-fingerprint: chrome
+
+profile:
+  store-selected: true
+  store-fake-ip: true
+
+sniffer:
+  enable: true
+  sniff:
+    HTTP:
+      ports: [80, 8080-8880]
+      override-destination: true
+    TLS:
+      ports: [443, 8443]
+    QUIC:
+      ports: [443, 8443]
+  skip-domain:
+    - "Mijia Cloud"
+    - "+.push.apple.com"
+
+tun:
+  enable: true
+  stack: system
+  mtu: 1400
+  auto-route: true
+  auto-detect-interface: true
+  auto-redirect: false
+  bypass-lan: true
+  dns-hijack:
+    - "any:53"
+    - "tcp://any:53"
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - geoip.cn
+    - domain:localhost
+    - domain:*.lan
+    - domain:*.local
+  ipv6: false
+
+
+dns:
+  enable: true
+  ipv6: false
+  prefer-h3: true
+  listen: '0.0.0.0:1053'
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - '*.lan'
+    - '*.local'
+    - '+.msftconnecttest.com'
+    - '+.msftncsi.com'
+    - '+.wechat.com'
+    - '+.qq.com'
+
+  default-nameserver:
+    - quic://223.5.5.5
+  proxy-server-nameserver:
+    - https://dns.alidns.com/dns-query
+  nameserver:
+    - quic://223.5.5.5
+  fallback:
+    - https://1.1.1.1/dns-query 
+    - https://8.8.8.8/dns-query 
+    - quic://223.5.5.5
+    
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    ipcidr:
+      - '240.0.0.0/4'
+  
+    
+proxies: 
+  - name: "直连"
+    type: direct
+    udp: true
+    
+
+proxy-groups:
+
+  - name: 默认
+    type: select
+    include-all: true
+    exclude-filter: '剩余|重置|到期|直连'
+    icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Proxy.png"
+
+  - name: Telegram
+    type: select
+    include-all: true
+    filter: "(?i)港|hk|hongkong|hong kong"
+    proxies: [默认,香港,台湾,日本,新加坡,美国,其它地区,国内]
+    icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Telegram.png"
+
+  - name: Google
+    type: select
+    filter: "(?i)美|us|unitedstates|united states"
+    proxies: [默认,香港,台湾,日本,新加坡,美国,其它地区,国内]
+    icon: "https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/GooglePlay.png"
+    
+  - name: YouTube
+    type: select
+    include-all: true
+    filter: "(?i)港|hk|hongkong|hong kong"
+    proxies: [默认,香港,台湾,日本,新加坡,美国,其它地区,国内]
+    icon: "https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/youtube.png"
+    
+  - name: Instagram
+    type: select
+    filter: "(?i)港|hk|hongkong|hong kong"
+    proxies: [默认,香港,台湾,日本,新加坡,美国,其它地区,国内]
+    icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/color/instagram.png"
+    
+  - name: Twitter
+    type: select
+    filter: "(?i)港|hk|hongkong|hong kong"
+    proxies: [默认,香港,台湾,日本,新加坡,美国,其它地区,国内]
+    icon: "https://raw.githubusercontent.com/fmz200/wool_scripts/main/icons/apps/github_17.png"
+
+  - name: 抖音地区
+    type: select
+    proxies: [默认,香港,台湾,日本,新加坡,美国,其它地区,国内]
+    icon: "https://raw.githubusercontent.com/fmz200/wool_scripts/main/icons/apps/TikTok_03.png"
+    
+  - name: 国内
+    type: select
+    proxies:  [直连]
+    icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/China_Map.png"
+
+  - name: 香港
+    type: select
+    include-all: true
+    exclude-type: direct
+    filter: "(?i)港|hk|hongkong|hong kong"
+    icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/color/hk.png"
+
+  - name: 台湾
+    type: select
+    include-all: true
+    exclude-type: direct
+    filter: "(?i)台|tw|taiwan"
+    icon: "https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/taiwan(4).png"
+
+  - name: 日本
+    type: select
+    include-all: true
+    exclude-type: direct
+    filter: "(?i)日|jp|japan"
+    icon: "https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/Japan(2).png"
+
+  - name: 美国
+    type: select
+    include-all: true
+    exclude-type: direct
+    filter: "(?i)美|us|unitedstates|united states"
+    icon: "https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/US(2).png"
+
+  - name: 新加坡
+    type: select
+    include-all: true
+    exclude-type: direct
+    filter: "(?i)(新|sg|singapore)"
+    icon: "https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/singapore.png"
+
+  - name: 其它地区
+    type: select
+    include-all: true
+    exclude-type: direct
+    exclude-filter: '剩余|重置|到期|直连'
+    filter: "(?i)^(?!.*(?:🇭🇰|🇯🇵|🇺🇸|🇸🇬|🇨🇳|港|hk|hongkong|台|tw|taiwan|日|jp|japan|新|sg|singapore|美|us|unitedstates)).*"
+    icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Puzzle.png"
+
+  
+rule-anchor:
+  classical-provider: &classical { type: http, interval: 86400, behavior: classical }
+  domain-provider: &domain { type: http, interval: 86400, behavior: domain }
+  ipcidr-provider: &ipcidr { type: http, interval: 86400, behavior: ipcidr }
+
+rule-providers:
+  Direct: { <<: *domain, url: 'https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Direct/Direct.yaml', path: ./ruleset/Direct.yaml }
+  Lan: { <<: *classical, url: 'https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Lan/Lan.yaml', path: ./ruleset/Lan.yaml }
+  Download: { <<: *classical, url: 'https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Download/Download.yaml', path: ./ruleset/Download.yaml }
+  OpenAi: { <<: *classical, url: 'https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/OpenAI/OpenAI.yaml', path: ./ruleset/OpenAi.yaml }
+  Telegram: { <<: *classical, url: 'https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Telegram/Telegram.yaml', path: ./ruleset/Telegram.yaml }
+  Github: { <<: *classical, url: 'https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/GitHub/GitHub.yaml', path: ./ruleset/Github.yaml }
+  Google: { <<: *classical, url: 'https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Google/Google.yaml', path: ./ruleset/Google.yaml }
+  YouTube: { <<: *classical, url: 'https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/YouTube/YouTube_No_Resolve.yaml', path: ./ruleset/YouTube_No_Resolve.yaml }
+  ChinaIP: { <<: *ipcidr, url: 'https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/ChinaIPs/ChinaIPs_IP.yaml', path: ./ruleset/ChinaIPs_IP.yaml }
+  Instagram: { <<: *classical, url: 'https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Instagram/Instagram.yaml', path: ./ruleset/Instagram.yaml }
+  Twitter: { <<: *classical, url: 'https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Twitter/Twitter.yaml', path: ./ruleset/Twitter.yaml }
+  Spotify: { <<: *classical, url: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Spotify/Spotify.yaml', path: ./ruleset/Spotify.yaml }
+  TikTok: { <<: *classical, url: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/TikTok/TikTok.yaml', path: ./ruleset/TikTok.yaml }  
+  Gemini: { <<: *classical, url: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Gemini/Gemini.yaml', path: ./ruleset/Gemini.yaml }
+
+rules:
+  - RULE-SET,Lan,国内,no-resolve
+  - PROCESS-NAME,org.telegram.messenger.web,Telegram
+  - PROCESS-NAME,com.tencent.mm,国内
+  - PROCESS-NAME,com.openai.chatgpt,美国
+  - PROCESS-NAME,com.ss.android.ugc.aweme,国内
+  - PROCESS-NAME,com.zhiliaoapp.musically,美国
+  - PROCESS-NAME,com.instagram.android,默认
+  - PROCESS-NAME,io.legado.app.release,国内
+  - PROCESS-NAME,com.google.android.youtube,YouTube
+  - PROCESS-NAME,com.jingdong.app.mall,国内
+  - PROCESS-NAME,com.binance.dev,台湾
+  - PROCESS-NAME,com.sankuai.meituan,国内
+  - PROCESS-NAME,com.ume.browser,国内
+  - PROCESS-NAME,com.tencent.mobileqq,国内
+  - PROCESS-NAME,com.coolapk.market,国内
+  - PROCESS-NAME,com.zte.smarthome,国内
+  - PROCESS-NAME,com.autonavi.minimap,国内
+  - PROCESS-NAME,com.icbc,国内
+  - PROCESS-NAME,com.greenpoint.android.mc10086.activity,国内 
+  - PROCESS-NAME,com.sdu.didi.psnger,国内
+  - PROCESS-NAME,com.example.administrator.searchpicturetool,国内
+  - PROCESS-NAME,com.kugou.android,国内
+  - PROCESS-NAME,com.larus.nova,国内
+  - DOMAIN,browserleaks.com,默认
+  - DOMAIN-SUFFIX,douyinvod.com,抖音地区
+  - DOMAIN-SUFFIX,amemv.com,抖音地区
+  - DOMAIN-SUFFIX,apissl.ksapisrv.com,抖音地区
+  - DOMAIN-SUFFIX,gifshow.com,抖音地区
+  - RULE-SET,Google,美国,no-resolve
+  - RULE-SET,Telegram,Telegram,no-resolve
+  - RULE-SET,OpenAi,美国,no-resolve
+  - RULE-SET,Github,默认,no-resolve
+  - RULE-SET,YouTube,YouTube,no-resolve
+  - RULE-SET,TikTok,美国,no-resolve
+  - RULE-SET,Spotify,默认,no-resolve
+  - DOMAIN-SUFFIX,ztems.com,国内
+  - RULE-SET,Direct,国内,no-resolve
+  - RULE-SET,Download,国内,no-resolve
+  - RULE-SET,ChinaIP,国内,no-resolve
+  - GEOIP,LAN,国内,no-resolve
+  - DOMAIN-SUFFIX,cn,国内
+  - GEOSITE,CN,国内
+  - GEOIP,CN,国内,no-resolve
+  - GEOSITE,geolocation-!cn,默认
+  - MATCH,默认
